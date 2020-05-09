@@ -1,0 +1,150 @@
+:scrollbar:
+:toc2:
+
+
+== Red Hat Process Automation Manager Workshop
+This workshop is aimed at providing hands on experience creating Decision and Process Assets. This lab will implement a Loan Approval workflow. 
+
+.Goals
+* Define and create the process domain model using the platform's Data Modeller.
+* Create a Loan Approval workflow.
+* Create an Age Pre-Qualification Decision using Guided Rules
+* Create an Interest Calculation decision using XLS Decision table.
+* Create a Loan Pre-Qualification Decision using Guided Decision tables.
+* Create Task forms for human tasks.
+* Deploying and Management of the Loan Approval Process
+
+
+.Prerequisite
+* Successful completion of the _Environment Setup Lab_
+or
+* An existing, accessible, DM/PAM 7.3+ environment.
+
+:numbered:
+
+== Problem Statement
+In this lab we will create an Loan Approval process.
+
+* Customer initiates the Loan Approval request. 
+* Age and Pre Qualification checks are applied to the loan request.
+* If the pre-qualification was succesful, then the request is assigned to a loan manager for approval.
+
+== Create a Project
+To define and deploy a business process, we first need to create a new project in which we can store the BPMN2 model, our domain model and the forms required for user interaction. To create a new project:
+
+. Navigate to {business_central}
+. Login to the platform with the provided username and password.
+. Click on **Design** to navigate to the Design perspective.
++
+image:images/space_view.jpg[]
++
+
+. In the Design perspective, create a new project. If your space is empty, this can be done by clicking on the blue **Add Project** button in the center of the page. If you already have projects in your space, you can click on the blue **Add Project** icon at the top right of the page.
+. Give the project the name `loan-approval`, and the description "Loan Approval Process".
++
+image:images/create_project.jpg[]
++
+
+With the project created, we can now start building our solution.
+
+== Solution
+
+=== The Domain Model
+
+The business process will collect and carry data through the execution of the process. This data is stored in a data model or domain model.
+In this lab, we collect two types of data:
+
+* `Applicant`: contains information about the Applicant, like age, credit score, monthly income etc.
+* `Loan`: contains information about the Loan request, like the loan duration and the Loan amount.
+
+. In your project, click on the _Add Asset_ button in the middle of the screen.
++
+
+image:images/add_asset.jpg[]
+. In the drop-down menu in the upper-left corner, select `Model`. Click on the _Data Object_ tile.
++
+image:images/add_asset_model.jpg[]
+. Give the _Data Object_ the name `Applicant`. Leave the package set to default.
++
+image:images/data_obj_create.jpg[]
+. Add the following fields to the `Applicant` data object by clicking on the _+ add field_ button:
++
+
+`Applicant`
++
+|===========
+|Identifier|Label|Type
+
+|age|Age|Integer
+|creditScore|Credit Score|Integer
+|monthlyIncome|Monthly Income|Double
+|yearlyIncome|Yearly Income|Double
+|name|Name|String
+|===========
++
+
+
+. When you've added the fields, save the data object by clicking on the _Save_ button in the top menu.
+After creation the `Applicant` Model should look like this.
++
+image:images/applicant_overview.jpg[]
+
+. Use the _breadcrumb navigator at the top-left of the screen to navigate back to our `loan-approval` project.
+. Click on the blue _Add Asset_ button in the top-right corner and create a new _Data Object_. Give it the name `Loan`
++
+image:images/loan_obj_create.jpg[]
+. Give the `Loan` object the following fields:
++
+`Loan`
++
+|===========
+|Identifier|Label|Type
+
+|amount|Amount|double
+|duration|Duration|Integer
+|interestRate|Interest Rate|Double
+|monthlyRepayment|Monthly Repayment|Double
+|agePreQual|Age PreQualification|boolean
+|loanPreQualification|Loan PreQualification|boolean
+|comment|comment|String
+
+|===========
+When you've added the fields, save the data object by clicking on the _Save_ button in the top menu.
+After creation the `Applicant` Model should look like this.
++
+image:images/loan_obj_save.jpg[]
++
+We're done creating our data model.
++
+image:images/assets_lib.jpg[]
+
+We can now create the required decisions for our process.
+
+=== Creating the Age Pre-Qualification Decision
+
+First let us create a simple Age Pre Qualification decision. The rule will do a simple check to ensure the Applicant's age is between 18 and 70.
+
+. Click on the _Add Asset_ button and choose the `Guided Rule` asset. Name it `AgePreQualification`.
++
+image:images/age_pre_qual_create.jpg[]
++
+
+> . Guided Rules are suited for individual rules that can be created in a UI-based rule designer in Decision Central
+> . Provide fields and options for acceptable input
+> . Are optimal for creating single rules in a controlled format to minimize compilation errors
++
+When the Guided edior opens up, click on the + icon on the right corner of the editor screen.
++
+image:images/guided_rule_step1.jpg[]
++
+If you recollect from the _Data Model_ section, Age is an attribute of the `Applicant` Object. Let us choose the Applicant Object to proceed.
+
++
+image:images/guided_rule_step2.jpg[]
+
+
+
+
+
+
+
