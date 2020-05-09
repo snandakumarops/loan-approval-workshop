@@ -133,15 +133,157 @@ image:images/age_pre_qual_create.jpg[]
 > . Provide fields and options for acceptable input
 > . Are optimal for creating single rules in a controlled format to minimize compilation errors
 +
-When the Guided edior opens up, click on the + icon on the right corner of the editor screen.
+. When the Guided edior opens up, click on the + icon on the right corner of the editor screen.
 +
 image:images/guided_rule_step1.jpg[]
 +
-If you recollect from the _Data Model_ section, Age is an attribute of the `Applicant` Object. Let us choose the Applicant Object to proceed.
-
+Let us first import the Applicant Object as below.
 +
 image:images/guided_rule_step2.jpg[]
++
+. Now again click on the first green + icon as we did in the previous step and choose the Loan Object.
++
+image:images/guided_rule_step3.jpg[]
++
+We have imported the required input objects.
++
+. Next, click on step 1
 
++
+image:images/guided_rule_step4.jpg[]
++
+. Select the _All of (And)_ option in the Multiple field constraint field.
++
+image:images/guided_rule_step5.jpg[]
++
+. Next we will add the conditions. For this click on the _all of the following:_ displayed below the Applicant Object.
+image:images/guided_rule_step6.jpg[]
++
+. We will add the conditions now. We would need the age to be greater than 18 and less than 82. Let us do that by selecting age from the _Add a restriction on a field_ drop down.
+
++
+image:images/guided_rule_step7.jpg[]
+
++
+. This should add the age field on the editor
+Now select the _greater than_ option from the drop down and click on the small pencil icon next to the drop down.
++
+image:images/guided_rule_step8.jpg[]
++
+. We will enter 18 here to indicate the condition, similarly we will add a condition for less than 70 as well.
+
++
+image:images/guided_rule_step9.jpg[]
++
+. Next let us click on the 2nd Step which is _There is a Loan_. 
++
+image:images/guided_rule_step11.jpg[]
++
+. We will enter an alias for this Loan object as below
++
+image:images/guided_rule_step12.jpg[]
++
+. Now we have finished defining all the conditions, let us now define the action. Let us click on the green icon to add the _Then_ clause.
++
+image:images/guided_rule_step10.jpg[]
++
+. Here we will select the option for _Change field values of Loan_
++
+image:images/guided_rule_step13.jpg[]
++
+. Next let us click on the pencil icon to tell the editor which field to choose. We will choose the field `agePreQual` and choose ok. Subsequently we again choose the pencil icon next to the field and set the value as true. Your result should look like below.
++
+image:images/guided_rule_step14.jpg[]
++
+. Finally we will do one last thing here, since the rules are going to orchestrated using a business process, we will provide it an identifier called _Rule Flow Group_. For this click on the _show options_ link.
+
++
+image:images/guided_rule_step15.jpg[]
++
+image:images/guided_rule_step16.jpg[]
++
+. We will choose the attribute _ruleflow-group_ from the drop down and click on ok. We will enter `age_qualification` for the value of attribute.
+
++
+image:images/guided_rule_step17.jpg[]
++ 
+. We are all done now. We can now click on _Save_ to save the rule and clicking on _Validate_. This should end up being succesful.
++
+
+. Next let us setup a test for testing this rule artifact. 
++
+. For this go back to the asset library view, and choose the _Add Asset_ button. We will choose the artifact type _Test Scenario_. 
++
+image:images/guided_rule_step18.jpg[]
++
+. On the Test Scenario editor, we provide the _Given_ and the _Then_ clauses. On the right side pane we have the objects listed. Click on the Given Object type and choose the Applicant object from the right pane. We will choose the `age` field.
++
+image:images/guided_rule_step19.jpg[]
++
+. Now we will click on the Applicant column under _Given_ and using the context option add a new column to the right. Here, we will choose _Loan_. Finally click on the _Then_ column and add the object _Loan_. Here we will choose the field `agePreQual`. 
++
+image:images/guided_rule_step20.jpg[]
++
+image:images/guided_rule_step21.jpg[]
++
+. Next let us inform the test editor which _Rule Flow Group_ we are testing with. For this click on the settings option from the right side pane.
++
+image:images/guided_rule_step22.jpg[]
++
+. Enter the value for the Rule Flow Group as `age_qualification`.
++
+. Now we can add values to the various columns by editing the cells similar to spread sheet editing.
++
+image:images/guided_rule_step23.jpg[]
++
+. Once done, click on the _Test_ button to test the rules. As shown in the image above by clicking on the metrics option from the right side pane, we can see coverage reports show up as well. Finally save the artifact.
+
+Congratulations! We have now created our first artifact.
+
+=== Creating the Interest Calculation
+
+. We will now use another authoring format to create the Interest Rate Calculation table. 
++
+
+> . Uploaded Decision tables are XLS or XLSX decision table spreadsheets that you upload into Decision Central
+> . Support template keys and values for creating rule templates
+> . Are optimal for creating rules in decision tables already managed outside of Decision Central
+Have strict syntax requirements for rules to be compiled properly when uploaded
++
+Spreadsheets require two key areas that define rule data: a RuleSet area and a RuleTable area. The RuleSet area of the spreadsheet defines elements that you want to apply globally to all rules in the same package (not only the spreadsheet), such as a rule set name or universal rule attributes. The RuleTable area defines the actual rules (rows) and the conditions, actions, and other rule attributes (columns) that constitute that rule table within the specified rule set. A decision table spreadsheet can contain multiple RuleTable areas, but only one RuleSet area.
+
+. For the purpose of this excercise, you can download the template available here. 
++
+link:resources/interest_rate_calculation.xls[Interest Rate calculation]
+
++ 
+Your spread sheet should look like this. 
++
+image:images/spread_sheet_1.jpg[]
++
+Let us now inspect the values. The ruleset section defines the _Rule Set name_, the _Rule Flow Group_ and import to specify the object which we will be making use of(which in this case is Loan).
++
+The condition columns define the logic for identifying the Interest Rate. We also calculate the Monthly Repayment based on the amount.
+
+Let us now define the values _RuleTable_ as below.  Edit the downloaded spread sheet and enter these values.
+
+|===========
+|Min Amount|Max Amount|Duration(years)|Interest Rate
+
+||300000|7|0.47
+|300000|600000|7|0.70
+|600000||7|0.98
+||300000|10|0.72
+|300000|600000|10|0.90
+|600000||10|1.10
+
+||300000|20|1.25
+|300000|600000|20|1.39
+|600000||20|1.65
+
+|===========
+
+Once done, we will upload it to Business Central
 
 
 
