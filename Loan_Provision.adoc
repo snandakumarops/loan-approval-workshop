@@ -261,12 +261,12 @@ Your spread sheet should look like this.
 +
 image:images/spread_sheet_1.jpg[]
 +
-Let us now inspect the values. The ruleset section defines the _Rule Set name_, the _Rule Flow Group_ and import to specify the object which we will be making use of(which in this case is Loan).
+. Let us now inspect the values. The ruleset section defines the _Rule Set name_, the _Rule Flow Group_ and import to specify the object which we will be making use of(which in this case is Loan).
 +
 The condition columns define the logic for identifying the Interest Rate. We also calculate the Monthly Repayment based on the amount.
 
-Let us now define the values _RuleTable_ as below.  Edit the downloaded spread sheet and enter these values.
-
+. Let us now define the values _RuleTable_ as below.  Edit the downloaded spread sheet and enter these values.
++
 |===========
 |Min Amount|Max Amount|Duration(years)|Interest Rate
 
@@ -282,8 +282,20 @@ Let us now define the values _RuleTable_ as below.  Edit the downloaded spread s
 |600000||20|1.65
 
 |===========
-
++
 Once done, we will upload it to Business Central
+. Now select the _Add Asset_ button from the asset libary page and choose Decision Table(Spreadsheet)
+
++
+image:images/spread_sheet_2.jpg[]
++
+
+select the file which we edited in the previous step. This should create the artifact succesfully.
+
+=== Creating the Loan Pre Qualification Decision
+
+Next we will do a Loan Pre Qualification check based on interest rate, monthly income, 
+
 
 
 
