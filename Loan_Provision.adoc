@@ -454,7 +454,8 @@ image:images/process_4.jpg[]
 Next click on the Green circle(start node) and pull an arrow on to the _Business Rule_ node. To connect click on the node and choose the context help displayed around the node to choose the arrow as shown below.
 +
 image:images/process_12.jpg[]
-
++
+image:images/process_18.jpg[]
 . Next we need to define a gateway to filter only applicants with succesful Age Pre Qualification check. Click on the Rhombus from the process palette(on the left) and choose the Exclusive.
 
 +
@@ -485,5 +486,19 @@ Now connect the arrows.
 . Next we need to filter out all of the Loan Applications which failed the Pre Qualification. For this we will need to add another gateway. As we did earlier add a _Exclusive_ gateway. We will connect one end of the gateway to the end signal.
 +
 image:images/process_13.jpg[]
- 
+. Last we will define a human task for the Loan Manager approval. For this click on the _Task_ node from the process palette(on the left) and click on the _User_ task. Drag drop the node on to the canvas.
++
+We will edit the name and add the _Groups_. We will select `Administrators`.
++
+image:images/process_14.jpg[]
++
+Next scroll down to the _Assignments_ section and add the following assignment.
++
+image:images/process_15.jpg[]
+. Finally connect the arrows and define the logic for the XOR gateway as below.
++
+image:images/process_16.jpg[]
++
+image:images/process_17.jpg[]
+. Finally click on _Validate_ and it should be succesful.
 
