@@ -579,8 +579,9 @@ image:images/process_32.jpg[]
 +
 image:images/process_33.jpg[]
 
-.. Since the _Applicant_ and the _Loan_ objects are custom java objects, it shows up as hashcode string. To display values so that it shows up on the Process Variables meaningfully, we can add a toString() method to the _Loan_ object as below. If you make this change, make sure to Deploy the changes and start a new process to see the changes.
+.. Since the _Applicant_ and the _Loan_ objects are custom java objects, it shows up as hashcode string. To display values so that it shows up on the Process Variables meaningfully, we can add a toString() method to the _Loan_ object as below. If you make this change, make sure to Deploy the changes and start a new process to see the changes.z
 
++
 +
 image:images/process_35.jpg[]
 
