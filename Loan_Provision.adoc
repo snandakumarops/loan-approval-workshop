@@ -659,7 +659,7 @@ image:images/process_36.jpg[]
 .. Set the body to:
 
 +
-+
+
 ----
 {
    "approved":true
