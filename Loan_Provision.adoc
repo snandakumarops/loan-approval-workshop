@@ -692,10 +692,10 @@ Add the following dependency to your project:
 . Create a Java package in your src/main/java folder with the name com.myspace.loan_approval.
 
 
-. Download the Applicant.java file from link:resources/interest_rate_calculation.xls[this] location and add it to the package you’ve just created.
+. Download the Applicant.java file from link:resources/Applicant.java[this] location and add it to the package you’ve just created.
 
 
-. Download the 'Loan.java' file from this location and add it to the package.
+. Download the 'Loan.java' file from link:resources/Loan.java[this] location and add it to the package.
 
 
 . Create a new Java class called Main.
