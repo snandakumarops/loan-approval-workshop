@@ -294,7 +294,129 @@ select the file which we edited in the previous step. This should create the art
 
 === Creating the Loan Pre Qualification Decision
 
-Next we will do a Loan Pre Qualification check based on interest rate, monthly income, 
+Now we will do a Loan Pre Qualification check based on the loan amount, Debt Ratio and Credit Score. 
+
+We will now the _Guided Decision Table_ asset.
+
+> . Guided Decison are rules that you create in a UI-based table designer in Decision Central
+> . Are a wizard-led alternative to uploaded decision table spreadsheets
+> . Provide fields and options for acceptable input
+
+. Now go back to the asset library and click on _Add Asset_ button. Choose the Guided Decision Table option.
+
++
+image:images/guided_dtable_1.jpg[]
++
+
+> Hit policies determine the order in which rules (rows) in a guided decision table are applied, whether top to bottom, per specified priority, or other options. 
++
+For this example, we will leave it as the default selection.
++
+Guided Decision tables provide wizard based approach to defining condition and action columns.
++
+On the Guided Decision Table editor click on the Columns Tab.
++
+
+image:images/guided_dtable_2.jpg[]
+
+
+. First we will define a condition column to check for Min Loan Amount check. To Add a condition colum click on the _Insert Column_ button. This will open up the wizard. Choose the _Add a Condition_ option and click on _Next_
++
+image:images/guided_dtable_3.jpg[]
++
+
+First we need to import the data objects which we will be using for the rule. For this click on the _Create a new Fact Pattern_ button.
++
+Choose the `Loan` type and provide a binding variable.
+
++
+image:images/guided_dtable_4.jpg[]
++
+Next let us define the Calculation type, we will choose the _Literal Value_ and proceed.
++
+image:images/guided_dtable_5.jpg[]
++
+We will choose the amount field.
++
+image:images/guided_dtable_6.jpg[]
++
+Since we need to define the Min Amount check, we will choose the operation as `greater than` and proceed.
++
+image:images/guided_dtable_7.jpg[]
++
+Finally we will give the column a header name and save the column definition.
++
+image:images/guided_dtable_8.jpg[]
+. Next we will define the Max Loan Amount column, repeat the same steps as above but choose the operation type as `less than` instead.
++
+image:images/guided_dtable_20.jpg[]
++
+. Next let us define the Debt ratio.
++
+Since Debt Ratio is a calculation based on the Applicant's data. We will need to import the `Applicant` type and create a binding.
++
+image:images/guided_dtable_9.jpg[]
++
+image:images/guided_dtable_10.jpg[]
++
+Since this is a Formula and we need to make checks based on the Formula we will use the _Predicate_ option and proceed.
++
+Enter the formula in the predicate field followed by $param. This will mean that
+the evaulation of the Formula provided will be checked against the condition defined on the column and will evaluate to True/False.
++
+The Debt ratio uses the `monthlyRepaymentAmount` as calculated in the XLS spread sheet decision table with this formula:
+100*(loan.getMonthlyRepayment()/this.getMonthlyIncome())
++
+image:images/guided_dtable_11.jpg[]
++
+We will proceed along the wizard with default values and finally define a Header description.
++
+image:images/guided_dtable_12.jpg[]
++
+. Next we will need to create two columns for Max Credit Score and Min Credit Score. `creditScore` is a field in the _Applicant_ Object. Follow the pattern we did for defining the Max and Min Loan Amount to define these columns.
+. Now we need to define the _Action_ columns. For this click on _Insert Column_ and choose the value _Set the value of a field_ and hit next.
++
+image:images/guided_dtable_13.jpg[]
++
+We will set the value of `loanPreQualification` in the _Loan_ Object to a true/false. 
++
+image:images/guided_dtable_14.jpg[]
++
+Follow along the rest of the field with default values and define a header description.
+. We will define one more field which will provide reason for qualification/disqualification. For this click on _Insert Column_ option and choose the _Insert Column_ option. Choose the field `comment` of the _Loan_ Object and proceed. We will define an allowed set of values to provide a pre-filled drop down on the guided decision table editor. 
++
+image:images/guided_dtable_15.jpg[]
++ 
+Proceed along the editor with default values and define a header for the field and finsih saving the action column definition.
+. We will need to define the _Rule Flow Group_ for the rule definition that we created here. For this, expand the _Attribute Coumns_ and define the value for the `ruleflow-group` as below.
++
+image:images/guided_dtable_19.jpg[]
+. Switch back to the Model Tab and finally our table should look like this.
++
+image:images/guided_dtable_16.jpg[]
++
+. We will now enter the values for the decision table. For this click on the Insert button on the top right and click on _Append row_
++
+image:images/guided_dtable_21.jpg[]
++
+. Fill in the table values as given below. Notice that for the Reason Column the value is available as a drop down and the Loan Pre Qualification column shows up as check box because of its boolean nature.
++
+image:images/guided_dtable_17.jpg[]
++
+. Now Save the decision and click on _Validate_. To test the decision, let us import a _Test Scenario_ which we have created already.
+Download the test file from here.
++
+link:resources/TestPreQualification.scesim[Test Pre Qualification]
++
+Click on the _Import Asset_ and choose this file.
++
+image:images/guided_dtable_18.jpg[]
++
+Now Click on _Test_ to ensure they are no errors.
+Congratulations! We have now created all of the decisions needed for our process flow.
+
+
+
 
 
 
