@@ -137,11 +137,11 @@ image:images/age_pre_qual_create.jpg[]
 +
 image:images/guided_rule_step1.jpg[]
 +
-Let us first import the Applicant Object as below.
+Let us first import the `Applicant` Object as below.
 +
 image:images/guided_rule_step2.jpg[]
 +
-. Now again click on the first green + icon as we did in the previous step and choose the Loan Object.
+. Now again click on the first green + icon as we did in the previous step and choose the `Loan` Object.
 +
 image:images/guided_rule_step3.jpg[]
 +
@@ -156,7 +156,7 @@ image:images/guided_rule_step4.jpg[]
 +
 image:images/guided_rule_step5.jpg[]
 +
-. Next we will add the conditions. For this click on the _all of the following:_ displayed below the Applicant Object.
+. Next we will add the conditions. For this click on the _all of the following:_ displayed below the `Applicant` Object.
 image:images/guided_rule_step6.jpg[]
 +
 . We will add the conditions now. We would need the age to be greater than 18 and less than 82. Let us do that by selecting age from the _Add a restriction on a field_ drop down.
@@ -216,11 +216,11 @@ image:images/guided_rule_step17.jpg[]
 +
 image:images/guided_rule_step18.jpg[]
 +
-. On the Test Scenario editor, we provide the _Given_ and the _Then_ clauses. On the right side pane we have the objects listed. Click on the Given Object type and choose the Applicant object from the right pane. We will choose the `age` field.
+. On the Test Scenario editor, we provide the _Given_ and the _Then_ clauses. On the right side pane we have the objects listed. Click on the Given Object type and choose the `Applicant` object from the right pane. We will choose the `age` field.
 +
 image:images/guided_rule_step19.jpg[]
 +
-. Now we will click on the Applicant column under _Given_ and using the context option add a new column to the right. Here, we will choose _Loan_. Finally click on the _Then_ column and add the object _Loan_. Here we will choose the field `agePreQual`. 
+. Now we will click on the `Applicant` column under _Given_ and using the context option add a new column to the right. Here, we will choose `Loan`. Finally click on the _Then_ column and add the object `Loan`. Here we will choose the field `agePreQual`. 
 +
 image:images/guided_rule_step20.jpg[]
 +
@@ -261,7 +261,7 @@ Your spread sheet should look like this.
 +
 image:images/spread_sheet_1.jpg[]
 +
-. Let us now inspect the values. The ruleset section defines the _Rule Set name_, the _Rule Flow Group_ and import to specify the object which we will be making use of(which in this case is Loan).
+. Let us now inspect the values. The ruleset section defines the _Rule Set name_, the _Rule Flow Group_ and import to specify the object which we will be making use of(which in this case is `Loan`).
 +
 The condition columns define the logic for identifying the Interest Rate. We also calculate the Monthly Repayment based on the amount.
 
@@ -373,17 +373,17 @@ We will proceed along the wizard with default values and finally define a Header
 +
 image:images/guided_dtable_12.jpg[]
 +
-. Next we will need to create two columns for Max Credit Score and Min Credit Score. `creditScore` is a field in the _Applicant_ Object. Follow the pattern we did for defining the Max and Min Loan Amount to define these columns.
+. Next we will need to create two columns for Max Credit Score and Min Credit Score. `creditScore` is a field in the `Applicant` Object. Follow the pattern we did for defining the Max and Min Loan Amount to define these columns.
 . Now we need to define the _Action_ columns. For this click on _Insert Column_ and choose the value _Set the value of a field_ and hit next.
 +
 image:images/guided_dtable_13.jpg[]
 +
-We will set the value of `loanPreQualification` in the _Loan_ Object to a true/false. 
+We will set the value of `loanPreQualification` in the `Loan` Object to a true/false. 
 +
 image:images/guided_dtable_14.jpg[]
 +
 Follow along the rest of the field with default values and define a header description.
-. We will define one more field which will provide reason for qualification/disqualification. For this click on _Insert Column_ option and choose the _Insert Column_ option. Choose the field `comment` of the _Loan_ Object and proceed. We will define an allowed set of values to provide a pre-filled drop down on the guided decision table editor. 
+. We will define one more field which will provide reason for qualification/disqualification. For this click on _Insert Column_ option and choose the _Insert Column_ option. Choose the field `comment` of the `Loan` Object and proceed. We will define an allowed set of values to provide a pre-filled drop down on the guided decision table editor. 
 +
 image:images/guided_dtable_15.jpg[]
 + 
@@ -446,7 +446,7 @@ Now click on the node and edit the properties on the right side pane. We will gi
 +
 image:images/process_5.jpg[]
 +
-Next we will define the Inputs/Ouputs for the Rule. For this scroll down to the _Data Assignments_ section and click on the Assignments. We will map the _Loan_ and the _Applicant_ types as input and the _Applicant_ as output.
+Next we will define the Inputs/Ouputs for the Rule. For this scroll down to the _Data Assignments_ section and click on the Assignments. We will map the `Loan` and the `Applicant` types as input and the `Applicant` as output.
 
 +
 image:images/process_4.jpg[]
@@ -517,7 +517,7 @@ image:images/process_19.jpg[]
 The first two forms are generated for the _Data Objects_ that we have for _Applicant_ and _Form_. The third form is a Process start Form(used to kick-start a process) and the last is the User Task form(complete the user task).
 . Now open up the Form com_myspace_loan_approval_Applicant
 +
-You can see the various fields possible for an _Applicant_. Let us remove the field `Yearly Income` by clicking on the three dots on the right side of the field. You can also rearrange the fields as you see fit.
+You can see the various fields possible for an `Applicant`. Let us remove the field `Yearly Income` by clicking on the three dots on the right side of the field. You can also rearrange the fields as you see fit.
 +
 image:images/process_20.jpg[]
 +
@@ -579,7 +579,7 @@ image:images/process_32.jpg[]
 +
 image:images/process_33.jpg[]
 
-.. Since the _Applicant_ and the _Loan_ objects are custom java objects, it shows up as hashcode string. To display values so that it shows up on the Process Variables meaningfully, we can add a toString() method to the _Loan_ object as below. If you make this change, make sure to Deploy the changes and start a new process to see the changes.z
+.. Since the `Applicant` and the `Loan` objects are custom java objects, it shows up as hashcode string. To display values so that it shows up on the Process Variables meaningfully, we can add a toString() method to the `Loan` object as below. If you make this change, make sure to Deploy the changes and start a new process to see the changes.z
 
 +
 +
