@@ -590,4 +590,76 @@ image:images/process_35.jpg[]
 
 image:images/process_34.jpg[]
 
+=== Interacting with the Kie-Server APIs
+The Execution Server provides a rich RESTful API that allows user to interact with the process engine and deployed processes via a REST.
+This powerful feature allows users to create modern user interface and applications in their technology of choice (e.g. Entando DXP, ReactJS/Redux, AngularJS, etc.) and integrate these applications with the process engine to create modern, process driven, enterprise applications.
 
+The Swagger interface provides the description and documentation of the Execution Server’s RESTful API. At the same time, it allows the APIs to be called from the UI. This enables developers and users to quickly test a,in this case, a deployed business process.
+
+. Navigate to the swagger page. The swagger endpoint is available in the following url:
++
+KIE-Server-URL/docs
+
+. Locate the POST operation for the resource /server/containers/{containerId}/processes/{processId}/instances. This is the RESTful operation with which we can start a new process instance. Expand the operation:
+
++
+image:images/swagger_1.jpg[]
+
+. Click on the Try it out button.
+
+.. Set the containerId to loan-approval_1.0.0-SNAPSHOT.
+.. Set the processId to loan-approval.loan-approval-wkflow.
+.. Set Parameter content type to application/json.
+
+.. Set the Response content type to application/json.
+
+.. Set the  body to:
++
+`{
+  "applicant" : {
+    "com.myspace.loan_approval.Applicant" : {
+      "name" : "Mary",
+      "creditScore" : 750,
+      "monthlyIncome" :8000.0,
+      "age": 3
+    }
+  },
+  "loan" : {
+    "com.myspace.loan_approval.Loan" : {
+      "duration" : 7,
+      "amount":34000.0
+    }
+  }
+}`
+. Click on Execute. 
++
+image:images/process_36.jpg[]
+
+. Go back to the Business Central workbench. Go the process instances view and inspect the process instance we have just started.
+
+. The RESTful API provides many more operations. Let’s use the API to fetch our Task List and complete the _Loan Manager Approval_ task. In the Swagger API, navigate to the Process queries section. Find the GET operation for the resource /server/queries/tasks/instances/pot-owners. Expand the operation and click on the Try it out button. Click on the Execute button. This will return all the tasks for our user
+. We can see the _Loan Manager Approval_ task that is available in our inbox. Let’s complete this task.
+
+. Go to the Task Instances section in the Swagger interface and locate the PUT operation of the /server/containers/{containerId}/tasks/{taskInstanceId}/states/completed resource. This is the operation with which we can complete a task.
+.. Set the containerId to loan-approval_1.0.0-SNAPSHOT.
+
+
+.. Set the taskInstanceId to the id of the task instance you want to complete. The task instance id can be found in the list of task instances we got back from our previous REST operation.
+
+
+.. Set auto-progress to true. This controls the auto progression of the taks through the various states of the task lifecycle (i.e. claimed, started, etc.).
+
+
+.. Set the Parameter content type to application/json.
+
+
+.. Set the Response content type to application/json.
+.. Set the body to:
+
++
++
+`{
+   "approved":true
+}`
+
+image:images/process_37.jpg[]
