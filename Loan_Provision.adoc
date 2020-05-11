@@ -7,10 +7,10 @@ This workshop is aimed at providing hands on experience creating Decision and Pr
 
 .Goals
 * Define and create the process domain model using the platform's Data Modeller.
-* Create a Loan Approval workflow.
 * Create an Age Pre-Qualification Decision using Guided Rules
 * Create an Interest Calculation decision using XLS Decision table.
 * Create a Loan Pre-Qualification Decision using Guided Decision tables.
+* Create a Loan Approval workflow.
 * Create Task forms for human tasks.
 * Deploying and Management of the Loan Approval Process
 
