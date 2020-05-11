@@ -401,7 +401,7 @@ image:images/guided_dtable_21.jpg[]
 +
 . Fill in the table values as given below. Notice that for the Reason Column the value is available as a drop down and the Loan Pre Qualification column shows up as check box because of its boolean nature.
 +
-image:images/guided_dtable_17.jpg[width=200%]
+image:images/guided_dtable_17.jpg[scale=135]
 +
 . Now Save the decision and click on _Validate_. To test the decision, let us import a _Test Scenario_ which we have created already.
 Download the test file from here.
