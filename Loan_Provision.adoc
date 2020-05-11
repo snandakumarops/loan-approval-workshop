@@ -615,7 +615,8 @@ image:images/swagger_1.jpg[]
 
 .. Set the  body to:
 +
-`{
+----
+{
   "applicant" : {
     "com.myspace.loan_approval.Applicant" : {
       "name" : "Mary",
@@ -630,7 +631,8 @@ image:images/swagger_1.jpg[]
       "amount":34000.0
     }
   }
-}`
+}
+----
 . Click on Execute. 
 +
 image:images/process_36.jpg[]
@@ -658,8 +660,134 @@ image:images/process_36.jpg[]
 
 +
 +
-`{
+----
+{
    "approved":true
-}`
+}
+----
 +
 image:images/process_37.jpg[]
+
+=== Using the Kie-Server Client
+
+Here is a take home assignment for using the Java Client to interact with the Kie-Server.
+
+Red Hat Process Automation Manager provides a KIE-Server Client API that allows the user to interact with the KIE-Server from a Java client using a higher level API. It abstracts the data marshalling and unmarshalling and the creation and execution of the RESTful commands from the developer, allowing him/her to focus on developing business logic.
+
+. In this section we will create a simple Java client for our Loan Approval process.
++
+Create a new Maven Java JAR project in your favourite IDE (e.g. IntelliJ, Eclipse, Visual Studio Code).
++
+Add the following dependency to your project:
++
+----
+<dependency>
+  <groupId>org.kie.server</groupId>
+  <artifactId>kie-server-client</artifactId>
+  <version>7.30.0.Final</version>
+  <scope>compile</scope>
+</dependency>
+----
+
+. Create a Java package in your src/main/java folder with the name com.myspace.loan_approval.
+
+
+. Download the Applicant.java file from link:resources/interest_rate_calculation.xls[this] location and add it to the package you’ve just created.
+
+
+. Download the 'Loan.java' file from this location and add it to the package.
+
+
+. Create a new Java class called Main.
++
+Add a public static void main(String[] args) method to your main class.
++
+Before we implement our method, we first define a number of constants that we will need when implementing our method (note that the values of your constants can be different depending on your environment, model namespace, etc.):
++
+----
+//Kie-server URL
+private static final String KIE_SERVER_URL = "http://localhost:8080/kie-server/services/rest/server";
+private static final String CONTAINER_ID = "loan-approval_1.0.0-SNAPSHOT";
+//PAM username
+private static final String USERNAME = "adminUser";
+//PAM password
+private static final String PASSWORD = "RedHat";
+private static final String PROCESS_ID = "loan-approval.loan-approval-wkflow";`
+----
+
+
+. KIE-Server client API classes can mostly be retrieved from the KieServicesFactory class. We first need to create a KieServicesConfiguration instance that will hold our credentials and defines how we want our client to communicate with the server:
+
++
+----
+KieServicesConfiguration kieServicesConfig = KieServicesFactory.newRestConfiguration(KIE_SERVER_URL, new EnteredCredentialsProvider(USERNAME, PASSWORD));
+----
+
+
+
+. To allow the KIE-Server Client’s marshaller to marshall and unmarshall instances of our domain model, we need to add our domain model classes to the KieServicesConfiguration.
+
++
+----
+Set<Class<?>> extraClasses = new HashSet<>();
+extraClasses.add(OrderInfo.class);
+extraClasses.add(SupplierInfo.class);
+kieServicesConfig.addExtraClasses(extraClasses);
+
+----
+
+
+. Next, we create the KieServicesClient:
++
+----
+
+KieServicesClient kieServicesClient = KieServicesFactory.newKieServicesClient(kieServicesConfig);
+
+----
+
+
+. From this client we retrieve our ProcessServicesClient:
++
+----
+ProcessServicesClient processServicesClient = kieServicesClient.getServicesClient(ProcessServicesClient.class);
+----
+
+
+
+. We now create a Map which we will use to pass the process input variables. We create a new OrderInfo instance and SupplierInfo instance and put them in the Map.
++
+----
+Map<String, Object> inputData = new HashMap<>();
+Applicant applicant = new Applicant();
+applicant.setName("Mary");
+applicant.setCreditScore(750);
+applicant.setAge(34);
+applicant.setMonthlyIncome(8000.0);
+inputData.put("applicant", applicant);
+
+Loan loan = new Loan();
+loan.setDuration(7);
+loan.setAmount(34000);
+inputData.put("loan", loan);
+
+----
+
+
+. We can now start a new process instance via the ProcessServicesClient.
++
+----
+
+Long processInstanceId = processServicesClient.startProcess(CONTAINER_ID, PROCESS_ID, inputData);
+----
+
+
+
+. Finally, we can print the process instance id to System.out.
+
+
+. System.out.println("New 'Loan Approval' process instance started with instance-id: " + processInstanceId);
+
+
+
+
+. Compile your project and run it. Observe the output in the console, which should say: New 'Loan  Approval' process instance started with instance-id
