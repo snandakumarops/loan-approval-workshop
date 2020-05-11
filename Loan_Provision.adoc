@@ -415,11 +415,75 @@ image:images/guided_dtable_18.jpg[]
 Now Click on _Test_ to ensure they are no errors.
 Congratulations! We have now created all of the decisions needed for our process flow.
 
+=== Creating the Loan Approval Workflow
+Now that we have created all necessary pieces, we will now define the process. We will be building the following process flow.
+
+image:images/process_complete_1.jpg[]
 
 
+. First let us click on the _Add Asset_ button and choose the _Business Process_ type.
++
+image:images/process_1.jpg[]
+. When the process designer opens, click on the properties pane to open it up.
 
++
+image:images/process_designer_pen_aid.jpg[]
++
 
+. Scroll down in the property panel on the right side of the screen, until you see the section _Process Data_.
+. Expand the _Process Data_ section and add the following 3 _Process Variables_ by clicking on the _+_ sign.
 
++
 
+image:images/process_2.jpg[]
++
+. Next let us define the steps one by one. We will start off with _Age Pre-Qualification_. For this we will need to choose the _Business Rule_ node. Click on the left side process palette on the Task(Rectangle) option and drag drop the node on to the canvas.
++
 
+image:images/process_3.jpg[]
++
+Now click on the node and edit the properties on the right side pane. We will give it a name and rule flow group as below.
++
+image:images/process_5.jpg[]
++
+Next we will define the Inputs/Ouputs for the Rule. For this scroll down to the _Data Assignments_ section and click on the Assignments. We will map the _Loan_ and the _Applicant_ types as input and the _Applicant_ as output.
+
++
+image:images/process_4.jpg[]
++
+Next click on the Green circle(start node) and pull an arrow on to the _Business Rule_ node. To connect click on the node and choose the context help displayed around the node to choose the arrow as shown below.
++
+image:images/process_12.jpg[]
+
+. Next we need to define a gateway to filter only applicants with succesful Age Pre Qualification check. Click on the Rhombus from the process palette(on the left) and choose the Exclusive.
+
++
+image:images/process_6.jpg[]
+. Next we will need to invoke the Interest Rate calculation on the Loan data. For this click on the _Task_ node from the process palette(on the left) and choose the _Business Rule_ node. 
++
+We will edit the name and add the Rule Flow group as below.
++
+image:images/process_7.jpg[]
++
+We will add the Assignment as we did in the previous step with the following definition.
++
+image:images/process_8.jpg[]
+. We will also choose the Red circle from the process palette(on the left) and choose the _End_ event. Now we will connect the arrows between the _Age Pre-Qualification_, gateway and the _Interest Calculation_ as below.
++
+image:images/process_9.jpg[]
++
+We will also need to define the logic for the gateway, for this click on the arrow to the _Interest Rate Calculation_ and expand the _Implementation/Execution_ section. Here we will define the logic as below.
++
+image:images/process_11.jpg[]
+. Next we need to define the final rule for the Loan Pre Qualification check. Again drag and drop the _Business Rule_ node on the canvas. Edit the name and choose the _Rule flow group_ as `approval-rules`. We will define assignment for the rule as below.
+
++
+image:images/process_10.jpg[]
++ 
+Now connect the arrows.
+
+. Next we need to filter out all of the Loan Applications which failed the Pre Qualification. For this we will need to add another gateway. As we did earlier add a _Exclusive_ gateway. We will connect one end of the gateway to the end signal.
++
+image:images/process_13.jpg[]
+ 
 
