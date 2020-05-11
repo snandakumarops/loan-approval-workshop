@@ -501,4 +501,92 @@ image:images/process_16.jpg[]
 +
 image:images/process_17.jpg[]
 . Finally click on _Validate_ and it should be succesful.
+=== Creating the User Forms
+Next we will create User Forms to interact with the human tasks. We will set up one form to start the process and one for the Loan Manager Approval. 
+
+. For this on the Process editor click on the following option and choose `Generate all Forms`.
++
+image:images/process_19.jpg[]
++
+This will create a form with all possible values, we will now edit these forms to make sure we have the right fields.
+
+. Go Back to the Asset Library view and filter by Forms. You should now see 4 forms generated.
++
+image:images/process_19.jpg[]
++
+The first two forms are generated for the _Data Objects_ that we have for _Applicant_ and _Form_. The third form is a Process start Form(used to kick-start a process) and the last is the User Task form(complete the user task).
+. Now open up the Form com_myspace_loan_approval_Applicant
++
+You can see the various fields possible for an _Applicant_. Let us remove the field `Yearly Income` by clicking on the three dots on the right side of the field. You can also rearrange the fields as you see fit.
++
+image:images/process_20.jpg[]
++
+Save the changes.
+
+. Next let us open up the Form com_myspace_loan_approval_Loan
++
+You can see the various fields possible for an _Loan. Let us remove the fields `Interest Rate`,`Monthly Repayment`,`Age PreQual`,`Loan PreQualification` and `Monthly Repayment` and `comment` by clicking on the three dots on the right side of the field. You can also rearrange the fields as you see fit.
++
+image:images/process_21.jpg[]
+. Now we will open up the Process Start Form
+loan-approval.loan-approval-wkflow-taskform
+Let us remove the fields `Approved` and click on _Save_
++
+image:images/process_22.jpg[]
+. Finally let us open up the User Task Form - `Task-taskform` and make sure the fields look up.
+. Now we are ready to build and deploy the changes. Go back to the asset library and click on _Deploy_. (The Deploy action Builds & Deploys the changes).
+
+=== Process Management and Tracking
+. After the build is succesful, click top menu option and choose _Process Definition_.
++
+image:images/process_24.jpg[]
+. We can see the Process Defintion listed, now click on the three dots on the right side of the Process `loan-approval-wkflow`. Click on _Start_
++
+image:images/process_25.jpg[]
+. This should open up the Process Start Form.
+Enter the values for the form and proceed.
++
+image:images/process_26.jpg[]
+
+. We can now see the Process Instance View load up automatically.
++
+image:images/process_27.jpg[]
++
+Inspect the Process Summary
+
+. Click on the Diagram Tab on the Process Instance View. 
++
+image:images/process_28.jpg[]
++
+You can see that the completed steps show up in grey color and the current task in progress shows up with a Red outline.
+. The task is assigned for a loan manager approval. If you remember, we assigned the Groups for the task as `Administrators`. By default the user you logged in with should have access to this task. To access this click on the top menu option and choose `Task Inbox`.
++
+image:images/process_29.jpg[]
+. Task Inbox shows up assigned tasks for the user. In this case we should see one task waiting to be worked on.
++
+image:images/process_30.jpg[]
+. Since it is assigned to a group, we first need to claim it. Open up the task and click on _Claim_.
+
+
+. Now click on _Start_. We will approve the task by checking the `Approved` check  box. We will click _Complete_.  The task should now be completed. Let us go back to the Process Instance section by clicking the top Menu.
++
+image:images/process_31.jpg[]
+
+. Now let us inspect the completed instance by selecting the filter option as below.
++
+image:images/process_32.jpg[]
+. Click on the Process Variables tab and inspect the variables. 
++
+image:images/process_33.jpg[]
+
+.. Since the _Applicant_ and the _Loan_ objects are custom java objects, it shows up as hashcode string. To display values so that it shows up on the Process Variables meaningfully, we can add a toString() method to the _Loan_ object as below. If you make this change, make sure to Deploy the changes and start a new process to see the changes.
+
++
+image:images/process_35.jpg[]
+
+. Finally we will inspect the Diagram tab on the Process Instance View. The path that the process took to completion is represnted here.
++
+
+image:images/process_34.jpg[]
+
 
