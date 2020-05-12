@@ -365,6 +365,7 @@ Enter the formula in the predicate field followed by `$param`. This will mean th
 the evaulation of the Formula provided will be checked against the condition defined on the column and will evaluate to True/False.
 +
 The Debt ratio uses the `monthlyRepaymentAmount` as calculated in the XLS spread sheet decision table with this formula:
++
 ----
 100*(loan.getMonthlyRepayment()/this.getMonthlyIncome()) $param
 ----
