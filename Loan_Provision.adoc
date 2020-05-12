@@ -610,11 +610,11 @@ image:images/swagger_1.jpg[]
 
 . Click on the Try it out button.
 
-.. Set the containerId to `loan-approval_1.0.0-SNAPSHOT`.
-.. Set the processId to `loan-approval.loan-approval-wkflow`.
-.. Set Parameter content type to `application/json`.
+.. Set the containerId to `loan-approval_1.0.0-SNAPSHOT`
+.. Set the processId to `loan-approval.loan-approval-wkflow`
+.. Set Parameter content type to `application/json`
 
-.. Set the Response content type to `application/json`.
+.. Set the Response content type to `application/json`
 
 .. Set the  body to:
 +
@@ -646,7 +646,7 @@ image:images/process_36.jpg[]
 . We can see the _Loan Manager Approval_ task that is available in our inbox. Let’s complete this task.
 
 . Go to the Task Instances section in the Swagger interface and locate the PUT operation of the /server/containers/{containerId}/tasks/{taskInstanceId}/states/completed resource. This is the operation with which we can complete a task.
-.. Set the containerId to `loan-approval_1.0.0-SNAPSHOT`.
+.. Set the containerId to `loan-approval_1.0.0-SNAPSHOT`
 
 
 .. Set the taskInstanceId to the id of the task instance you want to complete. The task instance id can be found in the list of task instances we got back from our previous REST operation.
@@ -655,10 +655,10 @@ image:images/process_36.jpg[]
 .. Set auto-progress to true. This controls the auto progression of the taks through the various states of the task lifecycle (i.e. claimed, started, etc.).
 
 
-.. Set the Parameter content type to `application/json`.
+.. Set the Parameter content type to `application/json`
 
 
-.. Set the Response content type to `application/json`.
+.. Set the Response content type to `application/json`
 .. Set the body to:
 
 +
