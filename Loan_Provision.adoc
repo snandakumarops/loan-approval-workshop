@@ -296,7 +296,7 @@ select the file which we edited in the previous step. This should create the art
 
 Now we will do a Loan Pre Qualification check based on the loan amount, Debt Ratio and Credit Score. 
 
-We will now the _Guided Decision Table_ asset.
+We will now use the _Guided Decision Table_ asset.
 
 > . Guided Decison are rules that you create in a UI-based table designer in Decision Central
 > . Are a wizard-led alternative to uploaded decision table spreadsheets
@@ -361,11 +361,13 @@ image:images/guided_dtable_10.jpg[]
 +
 Since this is a Formula and we need to make checks based on the Formula we will use the _Predicate_ option and proceed.
 +
-Enter the formula in the predicate field followed by $param. This will mean that
+Enter the formula in the predicate field followed by `$param`. This will mean that
 the evaulation of the Formula provided will be checked against the condition defined on the column and will evaluate to True/False.
 +
 The Debt ratio uses the `monthlyRepaymentAmount` as calculated in the XLS spread sheet decision table with this formula:
-100*(loan.getMonthlyRepayment()/this.getMonthlyIncome())
+----
+100*(loan.getMonthlyRepayment()/this.getMonthlyIncome()) $param
+----
 +
 image:images/guided_dtable_11.jpg[]
 +
@@ -579,13 +581,13 @@ image:images/process_32.jpg[]
 +
 image:images/process_33.jpg[]
 
-.. Since the `Applicant` and the `Loan` objects are custom java objects, it shows up as hashcode string. To display values so that it shows up on the Process Variables meaningfully, we can add a toString() method to the `Loan` object as below. If you make this change, make sure to Deploy the changes and start a new process to see the changes.z
+.. Since the `Applicant` and the `Loan` objects are custom java objects, it shows up as hashcode string. To display values so that it shows up on the Process Variables meaningfully, we can add a toString() method to the `Loan` object as below. If you make this change, make sure to Deploy the changes and start a new process to see the changes.
 
 +
 +
 image:images/process_35.jpg[]
 
-. Finally we will inspect the Diagram tab on the Process Instance View. The path that the process took to completion is represnted here.
+. Finally we will inspect the Diagram tab on the Process Instance View. The path that the process took to completion is represented here.
 +
 
 image:images/process_34.jpg[]
@@ -607,11 +609,11 @@ image:images/swagger_1.jpg[]
 
 . Click on the Try it out button.
 
-.. Set the containerId to loan-approval_1.0.0-SNAPSHOT.
-.. Set the processId to loan-approval.loan-approval-wkflow.
-.. Set Parameter content type to application/json.
+.. Set the containerId to `loan-approval_1.0.0-SNAPSHOT`.
+.. Set the processId to `loan-approval.loan-approval-wkflow`.
+.. Set Parameter content type to `application/json`.
 
-.. Set the Response content type to application/json.
+.. Set the Response content type to `application/json`.
 
 .. Set the  body to:
 +
@@ -643,7 +645,7 @@ image:images/process_36.jpg[]
 . We can see the _Loan Manager Approval_ task that is available in our inbox. Let’s complete this task.
 
 . Go to the Task Instances section in the Swagger interface and locate the PUT operation of the /server/containers/{containerId}/tasks/{taskInstanceId}/states/completed resource. This is the operation with which we can complete a task.
-.. Set the containerId to loan-approval_1.0.0-SNAPSHOT.
+.. Set the containerId to `loan-approval_1.0.0-SNAPSHOT`.
 
 
 .. Set the taskInstanceId to the id of the task instance you want to complete. The task instance id can be found in the list of task instances we got back from our previous REST operation.
@@ -652,10 +654,10 @@ image:images/process_36.jpg[]
 .. Set auto-progress to true. This controls the auto progression of the taks through the various states of the task lifecycle (i.e. claimed, started, etc.).
 
 
-.. Set the Parameter content type to application/json.
+.. Set the Parameter content type to `application/json`.
 
 
-.. Set the Response content type to application/json.
+.. Set the Response content type to `application/json`.
 .. Set the body to:
 
 +
@@ -733,8 +735,8 @@ KieServicesConfiguration kieServicesConfig = KieServicesFactory.newRestConfigura
 +
 ----
 Set<Class<?>> extraClasses = new HashSet<>();
-extraClasses.add(OrderInfo.class);
-extraClasses.add(SupplierInfo.class);
+extraClasses.add(Applicant.class);
+extraClasses.add(Loan.class);
 kieServicesConfig.addExtraClasses(extraClasses);
 
 ----
@@ -757,7 +759,7 @@ ProcessServicesClient processServicesClient = kieServicesClient.getServicesClien
 
 
 
-. We now create a Map which we will use to pass the process input variables. We create a new OrderInfo instance and SupplierInfo instance and put them in the Map.
+. We now create a Map which we will use to pass the process input variables. We create a new Applicant instance and Loan instance and put them in the Map.
 +
 ----
 Map<String, Object> inputData = new HashMap<>();
