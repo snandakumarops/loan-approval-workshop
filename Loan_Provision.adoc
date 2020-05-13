@@ -514,8 +514,7 @@ image:images/process_19.jpg[]
 This will create a form with all possible values, we will now edit these forms to make sure we have the right fields.
 
 . Go Back to the Asset Library view and filter by Forms. You should now see 4 forms generated.
-+
-image:images/process_19.jpg[]
+
 +
 The first two forms are generated for the _Data Objects_ that we have for _Applicant_ and _Form_. The third form is a Process start Form(used to kick-start a process) and the last is the User Task form(complete the user task).
 . Now open up the Form com_myspace_loan_approval_Applicant
