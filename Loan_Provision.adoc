@@ -514,6 +514,8 @@ image:images/process_19.jpg[]
 This will create a form with all possible values, we will now edit these forms to make sure we have the right fields.
 
 . Go Back to the Asset Library view and filter by Forms. You should now see 4 forms generated.
++
+image:images/process_20.jpg[]
 
 +
 The first two forms are generated for the _Data Objects_ that we have for _Applicant_ and _Form_. The third form is a Process start Form(used to kick-start a process) and the last is the User Task form(complete the user task).
@@ -521,7 +523,7 @@ The first two forms are generated for the _Data Objects_ that we have for _Appli
 +
 You can see the various fields possible for an `Applicant`. Let us remove the field `Yearly Income` by clicking on the three dots on the right side of the field. You can also rearrange the fields as you see fit.
 +
-image:images/process_20.jpg[]
+image:images/process_21.jpg[]
 +
 Save the changes.
 
@@ -529,12 +531,11 @@ Save the changes.
 +
 You can see the various fields possible for an _Loan. Let us remove the fields `Interest Rate`,`Monthly Repayment`,`Age PreQual`,`Loan PreQualification` and `Monthly Repayment` and `comment` by clicking on the three dots on the right side of the field. You can also rearrange the fields as you see fit.
 +
-image:images/process_21.jpg[]
+image:images/process_22.jpg[]
 . Now we will open up the Process Start Form
 loan-approval.loan-approval-wkflow-taskform
 Let us remove the fields `Approved` and click on _Save_
-+
-image:images/process_22.jpg[]
+
 . Finally let us open up the User Task Form - `Task-taskform` and make sure the fields look up.
 . Now we are ready to build and deploy the changes. Go back to the asset library and click on _Deploy_. (The Deploy action Builds & Deploys the changes).
 
