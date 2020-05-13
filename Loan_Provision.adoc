@@ -504,6 +504,7 @@ image:images/process_16.jpg[]
 +
 image:images/process_17.jpg[]
 . Finally click on _Validate_ and it should be succesful.
+
 === Creating the User Forms
 Next we will create User Forms to interact with the human tasks. We will set up one form to start the process and one for the Loan Manager Approval. 
 
