@@ -484,6 +484,8 @@ image:images/process_9.jpg[]
 We will also need to define the logic for the gateway, for this click on the arrow to the _Interest Rate Calculation_ and expand the _Implementation/Execution_ section. Here we will define the logic as below.
 +
 image:images/process_11.jpg[]
++ 
+Make sure to define the condition on the other path which connects to the _End_ (red circle) as we did in the previous step.
 . Next we need to define the final rule for the Loan Pre Qualification check. Again drag and drop the _Business Rule_ node on the canvas. Edit the name and choose the _Rule flow group_ as `approval-rules`. We will define assignment for the rule as below.
 
 +

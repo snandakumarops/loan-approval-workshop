@@ -829,7 +829,7 @@ Now select the <em>greater than</em> option from the drop down and click on the 
 </div>
 </li>
 <li>
-<p>We will enter an alias for this Loan object as below</p>
+<p>We will enter an alias for this Loan object as below and click on <em>Set</em></p>
 <div class="paragraph">
 <p><span class="image"><img src="images/guided_rule_step12.jpg" alt="guided rule step12"></span></p>
 </div>
@@ -1115,7 +1115,7 @@ Have strict syntax requirements for rules to be compiled properly when uploaded<
 <p>First we need to import the data objects which we will be using for the rule. For this click on the <em>Create a new Fact Pattern</em> button.</p>
 </div>
 <div class="paragraph">
-<p>Choose the <code>Loan</code> type and provide a binding variable.</p>
+<p>Choose the <code>Loan</code> type and provide a binding variable. This is required so that we can start defining condition and action columns based on the <em>Loan</em> object.</p>
 </div>
 <div class="paragraph">
 <p><span class="image"><img src="images/guided_dtable_4.jpg" alt="guided dtable 4"></span></p>
@@ -1163,7 +1163,7 @@ Have strict syntax requirements for rules to be compiled properly when uploaded<
 <p><span class="image"><img src="images/guided_dtable_10.jpg" alt="guided dtable 10"></span></p>
 </div>
 <div class="paragraph">
-<p>Since this is a Formula and we need to make checks based on the Formula we will use the <em>Predicate</em> option and proceed.</p>
+<p>We will use the <em>Predicate</em> option and proceed.</p>
 </div>
 <div class="paragraph">
 <p>Enter the formula in the predicate field followed by <code>$param</code>. This will mean that
@@ -1196,7 +1196,7 @@ the evaulation of the Formula provided will be checked against the condition def
 <p><span class="image"><img src="images/guided_dtable_13.jpg" alt="guided dtable 13"></span></p>
 </div>
 <div class="paragraph">
-<p>We will set the value of <code>loanPreQualification</code> in the <code>Loan</code> Object to a true/false.</p>
+<p>We will set the value of <code>loanPreQualification</code> in the <code>Loan</code> Object.</p>
 </div>
 <div class="paragraph">
 <p><span class="image"><img src="images/guided_dtable_14.jpg" alt="guided dtable 14"></span></p>
@@ -1207,6 +1207,11 @@ the evaulation of the Formula provided will be checked against the condition def
 </li>
 <li>
 <p>We will define one more field which will provide reason for qualification/disqualification. For this click on <em>Insert Column</em> option and choose the <em>Insert Column</em> option. Choose the field <code>comment</code> of the <code>Loan</code> Object and proceed. We will define an allowed set of values to provide a pre-filled drop down on the guided decision table editor.</p>
+<div class="listingblock">
+<div class="content">
+<pre>"insufficient credit score","sufficient credit score","debt ratio too low","amount too low","amount too high"</pre>
+</div>
+</div>
 <div class="paragraph">
 <p><span class="image"><img src="images/guided_dtable_15.jpg" alt="guided dtable 15"></span></p>
 </div>
@@ -1215,7 +1220,7 @@ the evaulation of the Formula provided will be checked against the condition def
 </div>
 </li>
 <li>
-<p>We will need to define the <em>Rule Flow Group</em> for the rule definition that we created here. For this, expand the <em>Attribute Coumns</em> and define the value for the <code>ruleflow-group</code> as below.</p>
+<p>We will need to define the <em>Rule Flow Group</em> for the rule definition that we created here. For this, click on <em>Insert Column</em>, check the box <em>Include advanced options</em> and and click on <em>Add an Attribute column</em>. Select the <em>Ruleflow-Group</em> option and click on <em>Finish</em>. Expand the <em>Attribute Coumns</em> and define the value for the <code>ruleflow-group</code> as below.</p>
 <div class="paragraph">
 <p><span class="image"><img src="images/guided_dtable_19.jpg" alt="guided dtable 19"></span></p>
 </div>
@@ -1311,9 +1316,6 @@ Congratulations! We have now created all of the decisions needed for our process
 </div>
 <div class="paragraph">
 <p><span class="image"><img src="images/process_12.jpg" alt="process 12"></span></p>
-</div>
-<div class="paragraph">
-<p><span class="image"><img src="images/process_18.jpg" alt="process 18"></span></p>
 </div>
 </li>
 <li>
@@ -1803,7 +1805,7 @@ inputData.put("loan", loan);</pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2020-05-13 11:47:33 -0400
+Last updated 2020-05-18 06:36:17 -0400
 </div>
 </div>
 </body>
