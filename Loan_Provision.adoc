@@ -327,7 +327,7 @@ image:images/guided_dtable_3.jpg[]
 
 First we need to import the data objects which we will be using for the rule. For this click on the _Create a new Fact Pattern_ button.
 +
-Choose the `Loan` type and provide a binding variable.
+Choose the `Loan` type and provide a binding variable and click on _Set_.
 
 +
 image:images/guided_dtable_4.jpg[]
