@@ -179,7 +179,7 @@ image:images/guided_rule_step9.jpg[]
 +
 image:images/guided_rule_step11.jpg[]
 +
-. We will enter an alias for this Loan object as below
+. We will enter an alias for this Loan object as below and click on _Set_
 +
 image:images/guided_rule_step12.jpg[]
 +
@@ -327,7 +327,7 @@ image:images/guided_dtable_3.jpg[]
 
 First we need to import the data objects which we will be using for the rule. For this click on the _Create a new Fact Pattern_ button.
 +
-Choose the `Loan` type and provide a binding variable and click on _Set_.
+Choose the `Loan` type and provide a binding variable. This is required so that we can start defining condition and action columns based on the _Loan_ object.
 
 +
 image:images/guided_dtable_4.jpg[]
@@ -359,7 +359,7 @@ image:images/guided_dtable_9.jpg[]
 +
 image:images/guided_dtable_10.jpg[]
 +
-Since this is a Formula and we need to make checks based on the Formula we will use the _Predicate_ option and proceed.
+We will use the _Predicate_ option and proceed.
 +
 Enter the formula in the predicate field followed by `$param`. This will mean that
 the evaulation of the Formula provided will be checked against the condition defined on the column and will evaluate to True/False.
@@ -381,17 +381,21 @@ image:images/guided_dtable_12.jpg[]
 +
 image:images/guided_dtable_13.jpg[]
 +
-We will set the value of `loanPreQualification` in the `Loan` Object to a true/false. 
+We will set the value of `loanPreQualification` in the `Loan` Object. 
 +
 image:images/guided_dtable_14.jpg[]
 +
 Follow along the rest of the field with default values and define a header description.
 . We will define one more field which will provide reason for qualification/disqualification. For this click on _Insert Column_ option and choose the _Insert Column_ option. Choose the field `comment` of the `Loan` Object and proceed. We will define an allowed set of values to provide a pre-filled drop down on the guided decision table editor. 
 +
+----
+"insufficient credit score","sufficient credit score","debt ratio too low","amount too low","amount too high"
+----
++
 image:images/guided_dtable_15.jpg[]
 + 
 Proceed along the editor with default values and define a header for the field and finsih saving the action column definition.
-. We will need to define the _Rule Flow Group_ for the rule definition that we created here. For this, expand the _Attribute Coumns_ and define the value for the `ruleflow-group` as below.
+. We will need to define the _Rule Flow Group_ for the rule definition that we created here. For this, click on _Insert Column_, check the box _Include advanced options_ and and click on _Add an Attribute column_. Select the _Ruleflow-Group_ option and click on _Finish_. Expand the _Attribute Coumns_ and define the value for the `ruleflow-group` as below. 
 +
 image:images/guided_dtable_19.jpg[]
 . Switch back to the Model Tab and finally our table should look like this.
@@ -457,12 +461,13 @@ image:images/process_4.jpg[]
 Next click on the Green circle(start node) and pull an arrow on to the _Business Rule_ node. To connect click on the node and choose the context help displayed around the node to choose the arrow as shown below.
 +
 image:images/process_12.jpg[]
-+
-image:images/process_18.jpg[]
+
+
 . Next we need to define a gateway to filter only applicants with succesful Age Pre Qualification check. Click on the Rhombus from the process palette(on the left) and choose the Exclusive.
 
 +
 image:images/process_6.jpg[]
+
 . Next we will need to invoke the Interest Rate calculation on the Loan data. For this click on the _Task_ node from the process palette(on the left) and choose the _Business Rule_ node. 
 +
 We will edit the name and add the Rule Flow group as below.
